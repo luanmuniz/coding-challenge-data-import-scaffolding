@@ -27,6 +27,7 @@ export interface StoredPortCall {
   port: Port;
   arrival: Moment;
   departure: Moment;
+  isDeleted: boolean;
 }
 
 export interface StoredVesselSchedule {

@@ -5,12 +5,11 @@ import {
 
 import moment = require('moment');
 
-
 const importedVesselSchedule: ImportedVesselSchedule = {
   cursorValueAtFetchTime: moment('2019-03-01'),
   vessel: {
-    imo: 1234567,
-    name: 'Dummy vessel',
+    imo: 1,
+    name: 'Dummy vessel'
   },
   portCalls: [{
     departure: moment('2019-03-01T00:00:00Z'),
@@ -21,14 +20,11 @@ const importedVesselSchedule: ImportedVesselSchedule = {
     },
   }],
 };
+
 const storedVesselSchedule: StoredVesselSchedule = {
-  vessel: {
-    imo: 1234567,
-    name: 'Dummy vessel',
-  },
+  vessel: importedVesselSchedule.vessel,
   portCalls: [],
 };
-
 
 const expectedMergeActions: MergeAction[] = [{
   action: MergeActionType.INSERT,

@@ -4,7 +4,7 @@
   "description": "Node.JS + typescript scaffolding to solve Portchain's coding challenge",
   "main": "./dist/server.js",
   "scripts": {
-    "test": "jest",
+    "test": "jest ./src",
     "start": "ts-node src/server.js",
     "build": "rm -rf ./dist/* && npm run build-ts && npm run lint",
     "watch-node": "nodemon ./dist/server.js",
