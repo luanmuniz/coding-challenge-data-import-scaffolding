@@ -1,4 +1,4 @@
-import { Moment } from "moment"
+import { Moment } from 'moment';
 
 export interface Vessel {
   name: string;
@@ -19,7 +19,7 @@ export interface ImportedPortCall {
 export interface ImportedVesselSchedule {
   cursorValueAtFetchTime: Moment;
   vessel: Vessel;
-  portCalls: ImportedPortCall[]
+  portCalls: ImportedPortCall[];
 }
 
 export interface StoredPortCall {
@@ -31,7 +31,7 @@ export interface StoredPortCall {
 
 export interface StoredVesselSchedule {
   vessel: Vessel;
-  portCalls: StoredPortCall[]
+  portCalls: StoredPortCall[];
 }
 
 export enum MergeActionType {
