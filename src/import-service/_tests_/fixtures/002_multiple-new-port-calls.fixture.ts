@@ -1,3 +1,6 @@
+/**
+ * Test scenario: Imports 3 port calls into an empty DB
+ */
 
 import {
   MergeAction, MergeActionType, ImportedVesselSchedule, StoredVesselSchedule,

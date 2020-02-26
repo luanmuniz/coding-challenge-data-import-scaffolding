@@ -1,4 +1,7 @@
-
+/** Test scenario
+ * Update a single port call surrounded by 2 matching port calls.
+ * The update make the updated overlaps with its stored version
+ */
 import {
   MergeAction, MergeActionType, ImportedVesselSchedule, StoredVesselSchedule,
 } from '../../data-types';
