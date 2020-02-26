@@ -15,11 +15,14 @@ const referenceActionToLocalActionEnum = (referenceAction:string) => {
   }
 }
 
+export const isConfigured = !!process.env.PORTCHAIN_MERGER_REFERENCE_IMPLEMENTATION_API_URL
+
 /**
  * This 'reference' implementation is calling an external API that merges vessel schedules (port calls) together.
+ * It is used internally at Portchain to validate the implementation of the scaffolding. It also allows us to verify that the tests covering the merging algorithm are sound.
  */
 export const mergeVesselSchedules = async (importedVesselSchedule: ImportedVesselSchedule, storedVesselSchedule: StoredVesselSchedule): Promise<MergeAction[]> => {
-  
+
   const payload:any = {}
   payload.existingPortCalls = storedVesselSchedule.portCalls
   payload.newPortCalls = importedVesselSchedule.portCalls
@@ -27,11 +30,12 @@ export const mergeVesselSchedules = async (importedVesselSchedule: ImportedVesse
   try {
     const response:any = await fetch(process.env.PORTCHAIN_MERGER_REFERENCE_IMPLEMENTATION_API_URL, {
         method: 'post',
-        body:    JSON.stringify(payload),
-        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload),
+        headers: { 'Content-Type': 'application/json' }
     })
     let responseData = await response.json()
     responseData = responseData.filter((actionData:any) => actionData.action !== 'match') // The reference implementation returns the perfect match but the coding challenge does not require it
+    // console.log(JSON.stringify(responseData, null, 2))
     const mergeActions:MergeAction[] = responseData.map((actionData:any) => {
 
       if(actionData.newPortCall) {

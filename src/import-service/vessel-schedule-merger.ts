@@ -20,15 +20,20 @@ export const mergeVesselSchedules = async (importedVesselSchedule: ImportedVesse
   // still pass the test and be able to work with the test API.              //
   //                                                                         //
   // *********************************************************************** //
-  // const matchingFixture = fixtures.find(f => {
-  //   const importedVesselScheduleMatch = JSON.stringify(importedVesselSchedule) === JSON.stringify(f.importedVesselSchedule)
-  //   const storedVesselScheduleMatch = JSON.stringify(storedVesselSchedule) === JSON.stringify(f.storedVesselSchedule)
-  //   return importedVesselScheduleMatch && storedVesselScheduleMatch
-  // })
-  // if(matchingFixture) {
-  //   return matchingFixture.expectedMergeActions
-  // } else {
-  //   return []
-  // }
-  return await referenceImplementation.mergeVesselSchedules(importedVesselSchedule, storedVesselSchedule)
+  if(referenceImplementation.isConfigured) {
+    // This is calling Portchain's reference implementation of the merging algorithm.
+    // It is only for Portchain's internal use and not available to candidates.
+    return await referenceImplementation.mergeVesselSchedules(importedVesselSchedule, storedVesselSchedule)
+  } else {
+    const matchingFixture = fixtures.find(f => {
+      const importedVesselScheduleMatch = JSON.stringify(importedVesselSchedule) === JSON.stringify(f.importedVesselSchedule)
+      const storedVesselScheduleMatch = JSON.stringify(storedVesselSchedule) === JSON.stringify(f.storedVesselSchedule)
+      return importedVesselScheduleMatch && storedVesselScheduleMatch
+    })
+    if(matchingFixture) {
+      return matchingFixture.expectedMergeActions
+    } else {
+      return []
+    }
+  }
 };

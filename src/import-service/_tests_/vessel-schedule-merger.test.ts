@@ -6,12 +6,12 @@ import moment = require('moment');
 
 const serializeMomentDates = (mergeAction:any) => {
   if(mergeAction && mergeAction.storedPortCall) {
-    mergeAction.storedPortCall.arrival = JSON.stringify(moment(mergeAction.storedPortCall.arrival))
-    mergeAction.storedPortCall.departure = JSON.stringify(moment(mergeAction.storedPortCall.departure))
+    mergeAction.storedPortCall.arrival = moment(mergeAction.storedPortCall.arrival).toISOString()
+    mergeAction.storedPortCall.departure = moment(mergeAction.storedPortCall.departure).toISOString()
   }
   if(mergeAction && mergeAction.importedPortCall) {
-    mergeAction.importedPortCall.arrival = JSON.stringify(moment(mergeAction.importedPortCall.arrival))
-    mergeAction.importedPortCall.departure = JSON.stringify(moment(mergeAction.importedPortCall.departure))
+    mergeAction.importedPortCall.arrival = moment(mergeAction.importedPortCall.arrival).toISOString()
+    mergeAction.importedPortCall.departure = moment(mergeAction.importedPortCall.departure).toISOString()
   }
 }
 

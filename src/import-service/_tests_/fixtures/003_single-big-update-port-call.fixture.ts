@@ -15,11 +15,29 @@ const storedVesselSchedule: StoredVesselSchedule = {
   },
   portCalls: [{
     id: '1',
-    departure: moment('2019-03-01T02:00:00Z'),
-    arrival: moment('2019-03-02T03:00:00Z'),
+    departure: moment('2019-03-01T01:00:00Z'),
+    arrival: moment('2019-03-02T02:00:00Z'),
     port: {
       unLocode: 'FAKE1',
       name: 'Fake port 1',
+    },
+    isDeleted: false
+  }, {
+    id: '2',
+    departure: moment('2019-03-03T01:00:00Z'),
+    arrival: moment('2019-03-03T20:00:00Z'),
+    port: {
+      unLocode: 'FAKE2',
+      name: 'Fake port 2',
+    },
+    isDeleted: false
+  }, {
+    id: '3',
+    departure: moment('2019-03-17T01:00:00Z'),
+    arrival: moment('2019-03-18T02:00:00Z'),
+    port: {
+      unLocode: 'FAKE3',
+      name: 'Fake port 3',
     },
     isDeleted: false
   }]
@@ -35,13 +53,27 @@ const importedVesselSchedule: ImportedVesselSchedule = {
       unLocode: 'FAKE1',
       name: 'Fake port 1',
     },
+  }, {
+    departure: moment('2019-03-07T01:00:00Z'),
+    arrival: moment('2019-03-08T02:00:00Z'),
+    port: {
+      unLocode: 'FAKE2',
+      name: 'Fake port 2',
+    },
+  }, {
+    departure: moment('2019-03-17T01:00:00Z'),
+    arrival: moment('2019-03-18T02:00:00Z'),
+    port: {
+      unLocode: 'FAKE3',
+      name: 'Fake port 3',
+    },
   }],
 };
 
 const expectedMergeActions: MergeAction[] = [{
   action: MergeActionType.UPDATE,
-  importedPortCall: importedVesselSchedule.portCalls[0],
-  storedPortCall: storedVesselSchedule.portCalls[0]
+  importedPortCall: importedVesselSchedule.portCalls[1],
+  storedPortCall: storedVesselSchedule.portCalls[1]
 }];
 
 export {

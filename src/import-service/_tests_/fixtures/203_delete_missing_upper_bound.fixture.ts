@@ -48,34 +48,12 @@ const storedVesselSchedule: StoredVesselSchedule = {
 const importedVesselSchedule: ImportedVesselSchedule = {
   cursorValueAtFetchTime: moment('2019-03-01'),
   vessel: storedVesselSchedule.vessel,
-  portCalls: [{
-    departure: moment('2019-02-25T01:00:00Z'),
-    arrival: moment('2019-02-26T03:00:00Z'),
-    port: {
-      unLocode: 'FAKE1',
-      name: 'Fake port 1',
-    }
-  }, {
-    departure: moment('2019-03-05T09:00:00Z'),
-    arrival: moment('2019-03-06T03:00:00Z'),
-    port: {
-      unLocode: 'FAKE3',
-      name: 'Fake port 3',
-    },
-  }],
+  portCalls: storedVesselSchedule.portCalls.filter(pc => pc.id !== '3'),
 };
 
 const expectedMergeActions: MergeAction[] = [{
-  action: MergeActionType.UPDATE,
-  importedPortCall: importedVesselSchedule.portCalls[0],
-  storedPortCall: storedVesselSchedule.portCalls[0],
-}, {
   action: MergeActionType.DELETE,
   importedPortCall: null,
-  storedPortCall: storedVesselSchedule.portCalls[1],
-}, {
-  action: MergeActionType.UPDATE,
-  importedPortCall: importedVesselSchedule.portCalls[1],
   storedPortCall: storedVesselSchedule.portCalls[2],
 }];
 
