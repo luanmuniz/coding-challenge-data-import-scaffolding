@@ -7,7 +7,7 @@
     "noImplicitAny": true,
     "moduleResolution": "node",
     "sourceMap": false,
-    "outDir": "dist",
+    "outDir": "../../dist/server",
     "baseUrl": ".",
     "experimentalDecorators": true,
     "emitDecoratorMetadata": true,
@@ -19,6 +19,6 @@
     }
   },
   "include": [
-    "src/**/*"
+    "."
   ]
 }
