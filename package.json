@@ -13,7 +13,8 @@
     "watch": "concurrently -k -p \"[{name}]\" -n \"TypeScript,Node\" -c \"yellow.bold,green.bold\"  \"npm run watch-ts\" \"npm run watch-node\"",
     "build-server": "tsc --build ./src/server/tsconfig.json",
     "lint": "eslint --ext=ts --fix ./src",
-    "build-front-end": "webpack-cli src/front-end/index.tsx --config src/front-end/webpack-config.js"
+    "build-front-end": "webpack-cli src/front-end/index.tsx --config src/front-end/webpack-config.js",
+    "migrate": "node ./migrations/index.js"
   },
   "repository": {
     "type": "git",
@@ -51,6 +52,7 @@
     "moment": "^2.24.0",
     "node-fetch": "^2.6.0",
     "nodemon": "^2.0.2",
+    "pg": "^7.18.2",
     "react": "^16.13.0",
     "react-dom": "^16.13.0",
     "react-scripts": "3.4.0",

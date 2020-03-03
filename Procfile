@@ -1,0 +1,1 @@
+web: NODE_ENV=production npm run migrate && NODE_ENV=production npm start

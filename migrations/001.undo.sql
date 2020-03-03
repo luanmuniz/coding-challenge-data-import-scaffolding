@@ -1,0 +1,2 @@
+DROP TABLE IF EXISTS port_calls;
+DROP TABLE IF EXISTS vessels;

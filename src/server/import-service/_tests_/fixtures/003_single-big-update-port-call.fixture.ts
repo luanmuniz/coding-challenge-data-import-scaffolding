@@ -14,31 +14,25 @@ const storedVesselSchedule: StoredVesselSchedule = {
     name: 'Dummy vessel'
   },
   portCalls: [{
-    id: '1',
+    id: 1,
     departure: moment('2019-03-01T01:00:00Z'),
     arrival: moment('2019-03-02T02:00:00Z'),
-    port: {
-      unLocode: 'FAKE1',
-      name: 'Fake port 1',
-    },
+    portId: 'FAKE1',
+    portName: 'Fake port 1',
     isDeleted: false
   }, {
-    id: '2',
+    id: 2,
     departure: moment('2019-03-03T01:00:00Z'),
     arrival: moment('2019-03-03T20:00:00Z'),
-    port: {
-      unLocode: 'FAKE2',
-      name: 'Fake port 2',
-    },
+    portId: 'FAKE2',
+    portName: 'Fake port 2',
     isDeleted: false
   }, {
-    id: '3',
+    id: 3,
     departure: moment('2019-03-17T01:00:00Z'),
     arrival: moment('2019-03-18T02:00:00Z'),
-    port: {
-      unLocode: 'FAKE3',
-      name: 'Fake port 3',
-    },
+    portId: 'FAKE3',
+    portName: 'Fake port 3',
     isDeleted: false
   }]
 };
@@ -49,24 +43,18 @@ const importedVesselSchedule: ImportedVesselSchedule = {
   portCalls: [{
     departure: moment('2019-03-01T01:00:00Z'),
     arrival: moment('2019-03-02T02:00:00Z'),
-    port: {
-      unLocode: 'FAKE1',
-      name: 'Fake port 1',
-    },
+    portId: 'FAKE1',
+    portName: 'Fake port 1',
   }, {
     departure: moment('2019-03-07T01:00:00Z'),
     arrival: moment('2019-03-08T02:00:00Z'),
-    port: {
-      unLocode: 'FAKE2',
-      name: 'Fake port 2',
-    },
+    portId: 'FAKE2',
+    portName: 'Fake port 2',
   }, {
     departure: moment('2019-03-17T01:00:00Z'),
     arrival: moment('2019-03-18T02:00:00Z'),
-    port: {
-      unLocode: 'FAKE3',
-      name: 'Fake port 3',
-    },
+    portId: 'FAKE3',
+    portName: 'Fake port 3',
   }],
 };
 

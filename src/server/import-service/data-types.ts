@@ -11,7 +11,8 @@ export interface Port {
 }
 
 export interface ImportedPortCall {
-  port: Port;
+  portId: string;
+  portName: string;
   arrival: Moment;
   departure: Moment;
 }
@@ -23,8 +24,9 @@ export interface ImportedVesselSchedule {
 }
 
 export interface StoredPortCall {
-  id: string; // Unique identifier for that port call. Usually an auto increment or a hash.
-  port: Port;
+  id: number; // Unique identifier for that port call
+  portId: string;
+  portName: string;
   arrival: Moment;
   departure: Moment;
   isDeleted: boolean;

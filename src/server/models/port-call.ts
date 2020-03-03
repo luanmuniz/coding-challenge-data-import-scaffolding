@@ -1,12 +1,17 @@
-import {Table, Column, Model, DataType, AutoIncrement, CreatedAt, UpdatedAt} from 'sequelize-typescript';
+import {Table, Column, Model, DataType, AutoIncrement, CreatedAt, UpdatedAt, PrimaryKey, BelongsTo, DeletedAt} from 'sequelize-typescript';
 import { Moment } from 'moment';
+import Vessel from './vessel';
  
-@Table
-export class PortCall extends Model<PortCall> {
+@Table({
+  tableName: 'port_calls', 
+  underscored: true,
+})
+export default class PortCall extends Model<PortCall> {
  
-  @Column(DataType.BIGINT)
+  @PrimaryKey
   @AutoIncrement
-  id: string;
+  @Column(DataType.INTEGER)
+  id: number;
  
   @Column(DataType.DATE)
   arrival: Moment;
@@ -14,12 +19,27 @@ export class PortCall extends Model<PortCall> {
   @Column(DataType.DATE)
   departure: Moment;
 
+  @Column(DataType.STRING)
+  portId: string;
+
+  @Column(DataType.STRING)
+  portName: string;
+
   @Column(DataType.BOOLEAN)
   isDeleted: boolean;
 
   @CreatedAt
-  creationDate: Moment;
+  @Column(DataType.DATE)
+  createdDate: Moment;
 
   @UpdatedAt
-  updatedOn: Date;
+  @Column(DataType.DATE)
+  updatedDate: Moment;
+
+  @DeletedAt
+  @Column(DataType.DATE)
+  deletedDate: Moment;
+
+  @BelongsTo(() => Vessel, 'vessel_imo')
+  vessel: Vessel;
 }

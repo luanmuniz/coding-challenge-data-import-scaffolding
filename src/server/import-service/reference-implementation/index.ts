@@ -24,8 +24,28 @@ export const isConfigured = !!process.env.PORTCHAIN_MERGER_REFERENCE_IMPLEMENTAT
 export const mergeVesselSchedules = async (importedVesselSchedule: ImportedVesselSchedule, storedVesselSchedule: StoredVesselSchedule): Promise<MergeAction[]> => {
 
   const payload:any = {}
-  payload.existingPortCalls = storedVesselSchedule.portCalls
-  payload.newPortCalls = importedVesselSchedule.portCalls
+  payload.existingPortCalls = storedVesselSchedule.portCalls.map(pc => {
+    return {
+      id: '' + pc.id,
+      isDeleted: pc.isDeleted,
+      arrival: pc.arrival,
+      departure: pc.departure,
+      port: {
+        unLocode: pc.portId,
+        name: pc.portName
+      }
+    }
+  })
+  payload.newPortCalls = importedVesselSchedule.portCalls.map(pc => {
+    return {
+      arrival: pc.arrival,
+      departure: pc.departure,
+      port: {
+        unLocode: pc.portId,
+        name: pc.portName
+      }
+    }
+  })
 
   try {
     const response:any = await fetch(process.env.PORTCHAIN_MERGER_REFERENCE_IMPLEMENTATION_API_URL, {
@@ -49,8 +69,23 @@ export const mergeVesselSchedules = async (importedVesselSchedule: ImportedVesse
 
       return {
         action: referenceActionToLocalActionEnum(actionData.action),
-        importedPortCall: actionData.newPortCall,
-        storedPortCall: actionData.existingPortCall
+        importedPortCall: actionData.newPortCall.map((pc:any) => {
+          return {
+            arrival: pc.arrival,
+            departure: pc.departure,
+            portId: pc.port.unLocode,
+            portName: pc.port.name
+          }
+        }),
+        storedPortCall: actionData.existingPortCall.map((pc:any) => {
+          return {
+            id: parseInt(pc.id, 10),
+            arrival: pc.arrival,
+            departure: pc.departure,
+            portId: pc.port.unLocode,
+            portName: pc.port.name
+          }
+        })
       }
     })
     return mergeActions

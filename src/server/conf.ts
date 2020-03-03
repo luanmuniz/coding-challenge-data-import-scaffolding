@@ -1,0 +1,3 @@
+
+export const PORTCHAIN_MERGER_REFERENCE_IMPLEMENTATION_API_URL = process.env.PORTCHAIN_MERGER_REFERENCE_IMPLEMENTATION_API_URL
+export const PORTCHAIN_VESSEL_SCHEDULES_API_URL = 'https://import-coding-challenge-api.portchain.com/api'

@@ -12,31 +12,25 @@ const storedVesselSchedule = {
         name: 'Dummy vessel'
     },
     portCalls: [{
-            id: '1',
+            id: 1,
             departure: moment('2019-02-25T01:00:00Z'),
             arrival: moment('2019-02-26T03:00:00Z'),
-            port: {
-                unLocode: 'FAKE1',
-                name: 'Fake port 1',
-            },
+            portId: 'FAKE1',
+            portName: 'Fake port 1',
             isDeleted: false
         }, {
-            id: '2',
+            id: 2,
             departure: moment('2019-03-01T01:00:00Z'),
             arrival: moment('2019-03-02T20:00:00Z'),
-            port: {
-                unLocode: 'FAKE2',
-                name: 'Fake port 2',
-            },
+            portId: 'FAKE2',
+            portName: 'Fake port 2',
             isDeleted: false
         }, {
-            id: '3',
+            id: 3,
             departure: moment('2019-03-05T09:00:00Z'),
             arrival: moment('2019-03-06T03:00:00Z'),
-            port: {
-                unLocode: 'FAKE3',
-                name: 'Fake port 3',
-            },
+            portId: 'FAKE3',
+            portName: 'Fake port 3',
             isDeleted: false
         }]
 };
@@ -44,7 +38,7 @@ exports.storedVesselSchedule = storedVesselSchedule;
 const importedVesselSchedule = {
     cursorValueAtFetchTime: moment('2019-03-01'),
     vessel: storedVesselSchedule.vessel,
-    portCalls: storedVesselSchedule.portCalls.filter(pc => pc.id !== '3'),
+    portCalls: storedVesselSchedule.portCalls.filter(pc => pc.id !== 3),
 };
 exports.importedVesselSchedule = importedVesselSchedule;
 const expectedMergeActions = [{

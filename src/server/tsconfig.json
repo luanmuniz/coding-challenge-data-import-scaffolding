@@ -8,7 +8,7 @@
     "moduleResolution": "node",
     "sourceMap": false,
     "outDir": "../../dist/server",
-    "baseUrl": ".",
+    "baseUrl": "../..",
     "experimentalDecorators": true,
     "emitDecoratorMetadata": true,
     "paths": {

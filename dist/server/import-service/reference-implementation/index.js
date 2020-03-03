@@ -36,8 +36,28 @@ exports.isConfigured = !!process.env.PORTCHAIN_MERGER_REFERENCE_IMPLEMENTATION_A
  */
 exports.mergeVesselSchedules = (importedVesselSchedule, storedVesselSchedule) => __awaiter(void 0, void 0, void 0, function* () {
     const payload = {};
-    payload.existingPortCalls = storedVesselSchedule.portCalls;
-    payload.newPortCalls = importedVesselSchedule.portCalls;
+    payload.existingPortCalls = storedVesselSchedule.portCalls.map(pc => {
+        return {
+            id: '' + pc.id,
+            isDeleted: pc.isDeleted,
+            arrival: pc.arrival,
+            departure: pc.departure,
+            port: {
+                unLocode: pc.portId,
+                name: pc.portName
+            }
+        };
+    });
+    payload.newPortCalls = importedVesselSchedule.portCalls.map(pc => {
+        return {
+            arrival: pc.arrival,
+            departure: pc.departure,
+            port: {
+                unLocode: pc.portId,
+                name: pc.portName
+            }
+        };
+    });
     try {
         const response = yield node_fetch_1.default(process.env.PORTCHAIN_MERGER_REFERENCE_IMPLEMENTATION_API_URL, {
             method: 'post',
@@ -58,8 +78,23 @@ exports.mergeVesselSchedules = (importedVesselSchedule, storedVesselSchedule) =>
             }
             return {
                 action: referenceActionToLocalActionEnum(actionData.action),
-                importedPortCall: actionData.newPortCall,
-                storedPortCall: actionData.existingPortCall
+                importedPortCall: actionData.newPortCall.map((pc) => {
+                    return {
+                        arrival: pc.arrival,
+                        departure: pc.departure,
+                        portId: pc.port.unLocode,
+                        portName: pc.port.name
+                    };
+                }),
+                storedPortCall: actionData.existingPortCall.map((pc) => {
+                    return {
+                        id: parseInt(pc.id, 10),
+                        arrival: pc.arrival,
+                        departure: pc.departure,
+                        portId: pc.port.unLocode,
+                        portName: pc.port.name
+                    };
+                })
             };
         });
         return mergeActions;

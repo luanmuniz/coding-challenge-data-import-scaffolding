@@ -14,10 +14,8 @@ const importedVesselSchedule = {
     portCalls: [{
             departure: moment('2019-03-01T00:00:00Z'),
             arrival: moment('2019-03-02T00:00:00Z'),
-            port: {
-                unLocode: 'FAKE1',
-                name: 'Fake port 1',
-            },
+            portId: 'FAKE1',
+            portName: 'Fake port 1',
         }],
 };
 exports.importedVesselSchedule = importedVesselSchedule;

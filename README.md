@@ -32,3 +32,9 @@ For example:
 ```
 TEST_FIXTURE=(007|008) npm test
 ```
+
+
+# Running
+
+- `PORT` The HTTP port the server will listen to.
+- `DATABASE_URL` The URL of the database that sequelize will use to connect
