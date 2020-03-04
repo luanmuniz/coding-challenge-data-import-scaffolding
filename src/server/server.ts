@@ -9,11 +9,7 @@ const app = express()
 
 const staticPath = path.resolve(__dirname, '..', '..', 'dist', 'front-end', 'public')
 console.log('Serving static files at ',staticPath)
-app.use(express.static(staticPath));
-app.listen(PORT, async () => {
-  console.log(`Example app listening on port ${PORT}!`)
-  await importVesselsIntoLocalDatabase()
-})
+app.use(express.static(staticPath, {cacheControl: false}));
 
 app.post('/api/import', async (req, res) => {
   safeImportAllSchedules()
@@ -39,4 +35,13 @@ app.get('/api/vessel-schedule/:vesselImo', async (req, res) => {
 app.get('/api/port-call-history/:portCallId', async (req, res) => {
   // TODO: you need to implement this
   res.send([])
+})
+
+app.use(function(req, res){
+  res.sendfile(path.join(staticPath, 'index.html'));
+});
+
+app.listen(PORT, async () => {
+  console.log(`Example app listening on port ${PORT}!`)
+  await importVesselsIntoLocalDatabase()
 })

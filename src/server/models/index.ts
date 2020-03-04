@@ -7,7 +7,6 @@ import { DATABASE_URL, IS_PRODUCTION } from '../conf';
 const orm = new Sequelize(DATABASE_URL, {
   dialect: 'postgres',
   logging: false,
-  rejectUnauthorized: IS_PRODUCTION,
   dialectOptions: {
     ssl: IS_PRODUCTION,
     rejectUnauthorized: IS_PRODUCTION
