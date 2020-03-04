@@ -1,7 +1,7 @@
 
 # What is this
 
-This is a scaffolding for you to get started quickly on Portchain's coding challenge.
+This is a scaffolding project for you to get started quickly on Portchain's coding challenge.
 It is built with the following technologies in mind:
 - Sequelize connected to PostgreSQL
 - NodeJS + Typescript on the backend
@@ -16,8 +16,8 @@ It is built with the following technologies in mind:
 2. Run `npm install`
 3. Setup a PostgreSQL database. You can also ask for a cloud instance and we will provide you with one. 
 4. Configure the env variable `DATABASE_URL` and point it to your database.
-5. Run `npm run migrate`. This will create the tables in your new database.
-5. Run `npm build && npm start`
+5. Run `npm run migrate`. This will create the tables in your new database. Set `NODE_ENV=production` if connecting to a Heroku PostgreSQL instance. Such instance requires a SSL connection which is enabled through the NODE_ENV variable.
+5. Run `npm run build && npm start`
 6. Navigate to `http://localhost:3000` and verify that the scaffolding application is running (there should be vessels visible)
 
 ## Implement

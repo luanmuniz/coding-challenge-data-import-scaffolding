@@ -8,6 +8,7 @@
     "test": "jest ./src",
     "start": "node dist/server/server.js",
     "dev": "ts-node --project ./src/server/tsconfig.json ./src/server/server.ts",
+    "start:dev": "webpack-dev-server src/front-end/index.tsx --config src/front-end/webpack-config.js",
     "build": "rm -rf ./dist/* && npm run build-server && npm run build-front-end",
     "import": "ts-node --project ./src/server/tsconfig.json  ./src/scripts/import.ts",
     "watch-node": "nodemon ./dist/server.js",
@@ -78,7 +79,8 @@
     "source-map-loader": "^0.2.4",
     "ts-loader": "^6.2.1",
     "webpack": "^4.41.6",
-    "webpack-cli": "^3.3.11"
+    "webpack-cli": "^3.3.11",
+    "webpack-dev-server": "^3.10.3"
   },
   "eslintConfig": {
     "extends": "react-app"

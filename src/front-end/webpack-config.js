@@ -5,27 +5,34 @@ module.exports = {
   devtool: 'source-map',
   entry: "./index.tsx",
   mode: "development",
+  // devServer: {
+  //   port: 3001,
+  //   open: false,
+  //   proxy: {
+  //     "/api": "http://localhost:3000",
+  //     secure: false
+  //   }
+  // },
   output: {
-
     path: path.resolve(__dirname, '..', '..', 'dist', 'front-end', 'public'),
     filename: "app-bundle.js"
   },
   resolve: {
-      extensions: ['.Webpack.js', '.web.js', '.ts', '.js', '.jsx', '.tsx']
+    extensions: ['.Webpack.js', '.web.js', '.ts', '.js', '.jsx', '.tsx']
   },
   module: {
-      rules: [
-          {
-              test: /\.tsx$/,
-              exclude: /(node_modules|bower_components)/,
-              use: {
-                  loader: 'ts-loader',
-                  options: {
-                    configFile: "./tsconfig.json"
-                  }
-              }
+    rules: [
+      {
+        test: /\.tsx$/,
+        exclude: /(node_modules|bower_components)/,
+        use: {
+          loader: 'ts-loader',
+          options: {
+            configFile: "./tsconfig.json"
           }
-      ]
+        }
+      }
+    ]
   },
   plugins: [
     new HtmlWebpackPlugin({
