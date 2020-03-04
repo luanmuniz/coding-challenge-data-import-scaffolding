@@ -2,7 +2,6 @@ import fetch from 'node-fetch'
 import {PORTCHAIN_VESSEL_SCHEDULES_API_URL} from '../conf'
 import { Vessel, PortCall } from '../models'
 import { Moment } from 'moment'
-import { EventEmitter } from 'events'
 import moment = require('moment')
 
 const EXPECTED_CURSOR_FORMAT_IN_API = 'YYYY-MM-DD'
@@ -73,11 +72,13 @@ const executeForAllPossibleCursorValues = async(exec:(cursor:Moment) => Promise<
   }
 }
 
+/**
+ * Calls the import API for each possible cursor value and sequentially pass each result to the `execFuncOnNewSchedule` argument
+ */
 export const fetchFullVesselSchedule = async (vessel:Vessel, execFuncOnNewSchedule:(cursor:Moment, vesselSchedule:PortCall[]) => Promise<void>) => {
   console.info(`Fetching all historical schedules for vessel ${vessel.name} (${vessel.imo})`)
   await executeForAllPossibleCursorValues(async (cursor:Moment) => {
     const vesselSchedule = await fetchVesselScheduleSnapshot(vessel, cursor)
-    console.info(`Received ${vesselSchedule.length} port calls for ${vessel.name} (${vessel.imo}) at cursor ${cursor.format(EXPECTED_CURSOR_FORMAT_IN_API)}`)
     await execFuncOnNewSchedule(moment(cursor), vesselSchedule)
   })
 }

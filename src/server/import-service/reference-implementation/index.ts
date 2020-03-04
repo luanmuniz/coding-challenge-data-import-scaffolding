@@ -1,6 +1,7 @@
 import fetch from 'node-fetch'
 import { ImportedVesselSchedule, StoredVesselSchedule, MergeAction, MergeActionType } from '../data-types'
 import moment = require('moment')
+import { PORTCHAIN_MERGER_REFERENCE_IMPLEMENTATION_API_URL } from '../../conf'
 
 
 const referenceActionToLocalActionEnum = (referenceAction:string) => {
@@ -15,7 +16,7 @@ const referenceActionToLocalActionEnum = (referenceAction:string) => {
   }
 }
 
-export const isConfigured = !!process.env.PORTCHAIN_MERGER_REFERENCE_IMPLEMENTATION_API_URL
+export const isConfigured = !!PORTCHAIN_MERGER_REFERENCE_IMPLEMENTATION_API_URL
 
 /**
  * This 'reference' implementation is calling an external API that merges vessel schedules (port calls) together.
@@ -47,8 +48,12 @@ export const mergeVesselSchedules = async (importedVesselSchedule: ImportedVesse
     }
   })
 
+  if(payload.existingPortCalls.length === 0 && payload.newPortCalls.length === 0) {
+    return []
+  }
+
   try {
-    const response:any = await fetch(process.env.PORTCHAIN_MERGER_REFERENCE_IMPLEMENTATION_API_URL, {
+    const response:any = await fetch(PORTCHAIN_MERGER_REFERENCE_IMPLEMENTATION_API_URL, {
         method: 'post',
         body: JSON.stringify(payload),
         headers: { 'Content-Type': 'application/json' }
@@ -69,23 +74,20 @@ export const mergeVesselSchedules = async (importedVesselSchedule: ImportedVesse
 
       return {
         action: referenceActionToLocalActionEnum(actionData.action),
-        importedPortCall: actionData.newPortCall.map((pc:any) => {
-          return {
-            arrival: pc.arrival,
-            departure: pc.departure,
-            portId: pc.port.unLocode,
-            portName: pc.port.name
-          }
-        }),
-        storedPortCall: actionData.existingPortCall.map((pc:any) => {
-          return {
-            id: parseInt(pc.id, 10),
-            arrival: pc.arrival,
-            departure: pc.departure,
-            portId: pc.port.unLocode,
-            portName: pc.port.name
-          }
-        })
+        importedPortCall: actionData.newPortCall ? {
+            arrival: actionData.newPortCall.arrival,
+            departure: actionData.newPortCall.departure,
+            portId: actionData.newPortCall.port.unLocode,
+            portName: actionData.newPortCall.port.name
+          } : null,
+        storedPortCall: actionData.existingPortCall ? {
+            id: parseInt(actionData.existingPortCall.id, 10),
+            arrival: actionData.existingPortCall.arrival,
+            departure: actionData.existingPortCall.departure,
+            portId: actionData.existingPortCall.port.unLocode,
+            portName: actionData.existingPortCall.port.name,
+            isDeleted: false
+          } : null
       }
     })
     return mergeActions

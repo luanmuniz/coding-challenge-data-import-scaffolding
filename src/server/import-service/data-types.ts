@@ -38,13 +38,17 @@ export interface StoredVesselSchedule {
 }
 
 export enum MergeActionType {
-  DELETE,
-  UPDATE,
-  INSERT
+  DELETE, // A stored port call should be deleted
+  UPDATE, // A stored port call should be updated with new data from the import API
+  INSERT // A port call from the import API should be inserted into the DB
 }
 
+/**
+ * Describes a single action from the merge algorithm (this algorithm returns a list of actions)
+ * 
+ */
 export interface MergeAction {
-  action: MergeActionType;
-  importedPortCall: ImportedPortCall | null;
-  storedPortCall: StoredPortCall | null;
+  action: MergeActionType; // The type of the merge action
+  importedPortCall: ImportedPortCall | null; // The imported port call. This must be null if the action is DELETE.
+  storedPortCall: StoredPortCall | null; // The port call as it is in the databse. This must be null if the action is INSERT.
 }
