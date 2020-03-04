@@ -4,12 +4,13 @@ import Vessel from './vessel';
 import PortCall from './port-call';
 import { DATABASE_URL, IS_PRODUCTION } from '../conf';
 
-console.log('IS_PRODUCTION', IS_PRODUCTION)
 const orm = new Sequelize(DATABASE_URL, {
   dialect: 'postgres',
   logging: false,
+  rejectUnauthorized: IS_PRODUCTION,
   dialectOptions: {
-    ssl: IS_PRODUCTION
+    ssl: IS_PRODUCTION,
+    rejectUnauthorized: IS_PRODUCTION
   }
 });
 
