@@ -16,7 +16,7 @@
     "build-server": "tsc --build ./src/server/tsconfig.json",
     "lint": "eslint --ext=ts --fix ./src",
     "build-front-end": "webpack-cli src/front-end/index.tsx --config src/front-end/webpack-config.js",
-    "migrate": "node ./migrations/index.js"
+    "migrate": "ts-node --project ./src/server/tsconfig.json  ./migrations/"
   },
   "repository": {
     "type": "git",

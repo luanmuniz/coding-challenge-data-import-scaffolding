@@ -6,9 +6,6 @@ export class PortCallHistory extends React.Component<any, {}>  {
     super(props);
   }
 
-  componentWillMount() {
-  }
-
   render(){
     return(
       <div>

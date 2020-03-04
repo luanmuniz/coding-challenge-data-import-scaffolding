@@ -6,9 +6,6 @@ export class VesselSchedule extends React.Component<any, {}>  {
     super(props);
   }
 
-  componentWillMount() {
-  }
-
   render(){
     return(
       <div>

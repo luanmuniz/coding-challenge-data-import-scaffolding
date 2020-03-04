@@ -23,7 +23,7 @@ export class VesselList extends React.Component<any, State>  {
     };
   }
 
-  componentWillMount() {
+  componentDidMount() {
     this.renderVessels();
   }
 

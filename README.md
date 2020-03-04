@@ -15,7 +15,8 @@ It is built with the following technologies in mind:
 1. Clone this repo on your local machine
 2. Run `npm install`
 3. Setup a PostgreSQL database. You can also ask for a cloud instance and we will provide you with one. 
-4. Configure the env variable `DATABASE_URL` and point it to your database
+4. Configure the env variable `DATABASE_URL` and point it to your database.
+5. Run `npm run migrate`. This will create the tables in your new database.
 5. Run `npm build && npm start`
 6. Navigate to `http://localhost:3000` and verify that the scaffolding application is running (there should be vessels visible)
 
@@ -28,6 +29,12 @@ There are 2 parts that you need to implement:
 2. The User Interface. You need to display two additional pages:
   a. The list of port calls for a given vessel
   b. The history of each port call
+
+## Importing data
+
+We provide 2 out of the box ways of importing data from the API and run your merge algorithm on this real data:
+1. Click on the import button in the UI
+2. Run the [import script](#import_script)
 
 # Tests
 
@@ -56,8 +63,15 @@ For example:
 TEST_FIXTURE=(007|008) npm test
 ```
 
+# Import script
 
-# Running
+There is an import script that runs your merge algorithm on the real data provided by the coding challenge import API.
 
-- `PORT` The HTTP port the server will listen to.
-- `DATABASE_URL` The URL of the database that sequelize will use to connect
+You can run this script on ALL vessels or on a specific vessel by IMO:
+
+- `npm run import` runs on all vessels.
+- `VESSEL_IMO=9387425 npm run import` only runs the importer on the vessel with imo `9387425`.
+
+# Environment variables.
+
+Check the [conf.ts](src/server/conf.ts) file for all the environment variables and their use.

@@ -62,7 +62,7 @@ const importFullVesselSchedule = async (vessel:Vessel) => {
           break;
       }
     }
-    logSummaryOfActionsTaken(cursor, vessel, mergeActions)
+    logSummaryOfImportStep(cursor, vessel, importedVesselSchedule, existingPortCalls, mergeActions)
   })
   console.info(`Vessel ${vessel.name} (${vessel.imo}) has been fully imported into the local database`)
 }
@@ -97,7 +97,7 @@ export const importSingleVesselSchedules = async (vessel?:Vessel) => {
   await importFullVesselSchedule(vessel)
 }
 
-const logSummaryOfActionsTaken = (cursor:Moment, vessel:Vessel, mergeActions:MergeAction[]) => {
+const logSummaryOfImportStep = (cursor:Moment, vessel:Vessel, importedVesselSchedule:PortCall[], existingPortCalls:PortCall[], mergeActions:MergeAction[]) => {
   const accumulator = {
     inserts: 0,
     updates: 0,
@@ -118,5 +118,5 @@ const logSummaryOfActionsTaken = (cursor:Moment, vessel:Vessel, mergeActions:Mer
     return acc
   }, accumulator)
 
-  console.log(`[Actions taken] vessel=${vessel.name} (${vessel.imo}), cursor=${cursor.format('YYYY-MM-DD')}, inserts=${accumulator.inserts}, updates=${accumulator.updates}, deletes=${accumulator.deletes}`)
+  console.log(`[Import summary] vessel=${vessel.name} (${vessel.imo}), portCallsInDB=${existingPortCalls.length}, cursor=${cursor.format('YYYY-MM-DD')}, portCallsFetchedFromImportAPI=${importedVesselSchedule.length}, inserts=${accumulator.inserts}, updates=${accumulator.updates}, deletes=${accumulator.deletes}`)
 }

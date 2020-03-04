@@ -2,6 +2,7 @@ import fetch from 'node-fetch'
 import { ImportedVesselSchedule, StoredVesselSchedule, MergeAction, MergeActionType } from '../data-types'
 import moment = require('moment')
 import { PORTCHAIN_MERGER_REFERENCE_IMPLEMENTATION_API_URL } from '../../conf'
+import { response } from 'express'
 
 
 const referenceActionToLocalActionEnum = (referenceAction:string) => {
@@ -94,6 +95,8 @@ export const mergeVesselSchedules = async (importedVesselSchedule: ImportedVesse
   } catch (e) {
     if(e.responseBody) {
       console.error((await e.responseBody).toString())
+    } else {
+      console.error('Failed to use reference API. Payload:', JSON.stringify(payload))
     }
     throw e
   }
