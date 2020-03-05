@@ -25,7 +25,7 @@ It is built with the following technologies in mind:
 There are 2 parts that you need to implement:
 
 1. The merging algorithm to import the vessel schedules
-   - You can rely on the existing tests that cover some basic scenarios. See [below](#Tests) on how to run the tests.
+   - You can rely on the existing tests that cover some basic scenarios. See [below](#tests) on how to run the tests.
 2. The User Interface oncluding a couple of new API endpoints. You need to display two additional pages:
    - The list of port calls for a given vessel
    - The history of each port call
@@ -35,7 +35,7 @@ There are 2 parts that you need to implement:
 We provide 2 out of the box ways of importing data from the API and run your merge algorithm on this real data:
 
 1. Click on the import button in the UI
-2. Run the [import script](#import_script)
+2. Run the [import script](#import-script)
 
 # Tests
 
@@ -47,7 +47,7 @@ These tests consist in fixtures describing 2 inputs and and an expected output:
 - A list of 'actions' that the merge algorithm should generate. See the API of the merge algorithm for more detailed information in [vessel-schedule-merger.ts](https://github.com/Portchain/coding-challenge-data-import-scaffolding/blob/master/src/server/import-service/vessel-schedule-merger.ts)
 
 
-run the following to run all tests:
+Run the following to run all tests:
 
 ```sh
 npm test
