@@ -26,7 +26,7 @@ There are 2 parts that you need to implement:
 
 1. The merging algorithm to import the vessel schedules
    - You can rely on the existing tests that cover some basic scenarios. See [below](#tests) on how to run the tests.
-2. The User Interface oncluding a couple of new API endpoints. You need to display two additional pages:
+2. The User Interface including a couple of new API endpoints. You need to display two additional pages:
    - The list of port calls for a given vessel
    - The history of each port call
 

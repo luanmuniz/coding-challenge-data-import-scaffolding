@@ -16,57 +16,57 @@ const storedVesselSchedule: StoredVesselSchedule = {
   },
   portCalls: [{
     id: 1,
-    departure: moment('2019-02-01T00:00:00Z'),
-    arrival: moment('2019-02-02T00:00:00Z'),
+    arrival: moment('2019-02-01T00:00:00Z'),
+    departure: moment('2019-02-02T00:00:00Z'),
     portId: 'FAKE1',
     portName: 'Fake port 1',
     isDeleted: false
   }, {
     id: 2,
-    departure: moment('2019-02-10T00:00:00Z'),
-    arrival: moment('2019-02-11T00:00:00Z'),
+    arrival: moment('2019-02-10T00:00:00Z'),
+    departure: moment('2019-02-11T00:00:00Z'),
     portId: 'FAKE2',
     portName: 'Fake port 2',
     isDeleted: false // delete
   }, {
     id: 3,
-    departure: moment('2019-02-12T00:00:00Z'),
-    arrival: moment('2019-02-13T00:00:00Z'),
+    arrival: moment('2019-02-12T00:00:00Z'),
+    departure: moment('2019-02-13T00:00:00Z'),
     portId: 'FAKE3',
     portName: 'Fake port 3', // move to earlier than #2
     isDeleted: false
   }, {
     id: 4,
-    departure: moment('2019-02-25T00:00:00Z'),
-    arrival: moment('2019-02-28T00:00:00Z'),
+    arrival: moment('2019-02-25T00:00:00Z'),
+    departure: moment('2019-02-28T00:00:00Z'),
     portId: 'FAKE1',
     portName: 'Fake port 1', // move 2 days earlier
     isDeleted: false
   }, {
     id: 5,
-    departure: moment('2019-03-05T00:00:00Z'),
-    arrival: moment('2019-03-06T00:00:00Z'),
+    arrival: moment('2019-03-05T00:00:00Z'),
+    departure: moment('2019-03-06T00:00:00Z'),
     portId: 'FAKE2',
     portName: 'Fake port 2', // untouch
     isDeleted: false
   }, {
     id: 6,
-    departure: moment('2019-04-01T00:00:00Z'),
     arrival: moment('2019-04-01T00:00:00Z'),
+    departure: moment('2019-04-01T00:00:00Z'),
     portId: 'FAKE3',
     portName: 'Fake port 3', // omit
     isDeleted: false
   }, {
     id: 7,
-    departure: moment('2019-04-10T00:00:00Z'),
-    arrival: moment('2019-04-11T00:00:00Z'),
+    arrival: moment('2019-04-10T00:00:00Z'),
+    departure: moment('2019-04-11T00:00:00Z'),
     portId: 'FAKE1',
     portName: 'Fake port 1', // delay 3 d
     isDeleted: false
   }, {
     id: 8,
-    departure: moment('2019-04-12T00:00:00Z'),
-    arrival: moment('2019-04-13T00:00:00Z'),
+    arrival: moment('2019-04-12T00:00:00Z'),
+    departure: moment('2019-04-13T00:00:00Z'),
     portId: 'FAKE2',
     portName: 'Fake port 2', // omit
     isDeleted: false
@@ -78,26 +78,26 @@ const importedVesselSchedule: ImportedVesselSchedule = {
   vessel: storedVesselSchedule.vessel,
   portCalls: [{
     //id: '3',
-    departure: moment('2019-02-09T21:00:00Z'),
-    arrival: moment('2019-02-10T15:00:00Z'),
+    arrival: moment('2019-02-09T21:00:00Z'),
+    departure: moment('2019-02-10T15:00:00Z'),
     portId: 'FAKE3',
     portName: 'Fake port 3',
   }, {
     //id: '4',
-    departure: moment('2019-02-24T07:00:00Z'),
-    arrival: moment('2019-02-25T23:30:00Z'),
+    arrival: moment('2019-02-24T07:00:00Z'),
+    departure: moment('2019-02-25T23:30:00Z'),
     portId: 'FAKE1',
     portName: 'Fake port 1',
   }, {
     //id: '5',
-    departure: moment('2019-03-05T00:00:00Z'),
-    arrival: moment('2019-03-06T00:00:00Z'),
+    arrival: moment('2019-03-05T00:00:00Z'),
+    departure: moment('2019-03-06T00:00:00Z'),
     portId: 'FAKE2',
     portName: 'Fake port 2',
   }, {
     //id: '7',
-    departure: moment('2019-04-12T22:30:00Z'),
-    arrival: moment('2019-04-13T13:45:00Z'),
+    arrival: moment('2019-04-12T22:30:00Z'),
+    departure: moment('2019-04-13T13:45:00Z'),
     portId: 'FAKE1',
     portName: 'Fake port 1'
   }],

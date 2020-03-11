@@ -16,18 +16,18 @@ const importedVesselSchedule: ImportedVesselSchedule = {
     name: 'Dummy vessel'
   },
   portCalls: [{
-    departure: moment('2019-02-25T01:18:00Z'),
-    arrival: moment('2019-02-26T02:54:00Z'),
+    arrival: moment('2019-02-25T01:18:00Z'),
+    departure: moment('2019-02-26T02:54:00Z'),
     portId: 'FAKE1',
     portName: 'Fake port 1',
   }, {
-    departure: moment('2019-03-01T01:00:00Z'),
-    arrival: moment('2019-03-02T20:00:00Z'),
+    arrival: moment('2019-03-01T01:00:00Z'),
+    departure: moment('2019-03-02T20:00:00Z'),
     portId: 'FAKE2',
     portName: 'Fake port 2',
   }, {
-    departure: moment('2019-03-05T09:00:00Z'),
-    arrival: moment('2019-03-06T03:00:00Z'),
+    arrival: moment('2019-03-05T09:00:00Z'),
+    departure: moment('2019-03-06T03:00:00Z'),
     portId: 'FAKE3',
     portName: 'Fake port 3',
   }],

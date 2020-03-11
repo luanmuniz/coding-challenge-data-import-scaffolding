@@ -15,8 +15,8 @@ const storedVesselSchedule: StoredVesselSchedule = {
   },
   portCalls: [{
     id: 1,
-    departure: moment('2019-03-01T02:00:00Z'),
-    arrival: moment('2019-03-02T03:00:00Z'),
+    arrival: moment('2019-03-01T02:00:00Z'),
+    departure: moment('2019-03-02T03:00:00Z'),
     portId: 'FAKE1',
     portName: 'Fake port 1',
     isDeleted: false
@@ -27,8 +27,8 @@ const importedVesselSchedule: ImportedVesselSchedule = {
   cursorValueAtFetchTime: moment('2019-03-01'),
   vessel: storedVesselSchedule.vessel,
   portCalls: [{
-    departure: moment('2019-03-01T01:00:00Z'),
-    arrival: moment('2019-03-02T02:00:00Z'),
+    arrival: moment('2019-03-01T01:00:00Z'),
+    departure: moment('2019-03-02T02:00:00Z'),
     portId: 'FAKE1',
     portName: 'Fake port 1',
   }],
