@@ -25,7 +25,7 @@ const storedVesselSchedule: StoredVesselSchedule = {
     id: 2,
     arrival: moment('2019-02-10T00:00:00Z'),
     departure: moment('2019-02-11T00:00:00Z'),
-    portId: 'FAKE2',
+    portId: 'FAKE2',  
     portName: 'Fake port 2',
     isDeleted: false // delete
   }, {

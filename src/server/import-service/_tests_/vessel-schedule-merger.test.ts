@@ -31,7 +31,7 @@ describe('vessel-schedule-merger', () => {
 
       actualMergeActions.forEach(serializeMomentDates)
       fixture.expectedMergeActions.forEach(serializeMomentDates)
-
+      
       expect(actualMergeActions).toMatchObject(fixture.expectedMergeActions);
     });
   });

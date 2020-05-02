@@ -1,6 +1,4 @@
 /** Test scenario
- * Update a single port call surrounded by 2 matching port calls.
- * The update is so that the updated port call overlaps with its stored version
  */
 import {
   MergeAction, MergeActionType, ImportedVesselSchedule, StoredVesselSchedule,
@@ -55,15 +53,7 @@ const importedVesselSchedule: ImportedVesselSchedule = {
   }],
 };
 
-const expectedMergeActions: MergeAction[] = [{
-  action: MergeActionType.UPDATE,
-  importedPortCall: importedVesselSchedule.portCalls[0],
-  storedPortCall: storedVesselSchedule.portCalls[1],
-}, {
-  action: MergeActionType.UPDATE,
-  importedPortCall: importedVesselSchedule.portCalls[1],
-  storedPortCall: storedVesselSchedule.portCalls[2],
-}];
+const expectedMergeActions: MergeAction[] = [];
 
 export {
   importedVesselSchedule,

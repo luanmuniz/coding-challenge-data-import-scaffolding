@@ -1,5 +1,5 @@
 /** Test scenario
- * Update a single port call surrounded by 2 matching port calls.
+ * Update multiple port calls.
  * The update is so that the updated port call overlaps with its stored version
  */
 import {
